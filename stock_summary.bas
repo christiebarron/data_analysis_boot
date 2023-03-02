@@ -2,7 +2,7 @@ Attribute VB_Name = "Module1"
 Sub stock_loop():
 
     'declaring looping variables
-    Dim i As Integer
+    Dim i As Long
     'Dim j As Integer
     
     
@@ -40,10 +40,11 @@ For Each ws In Worksheets
     'loop to save the ticker symbol in same row new column
     'For i = 2 To 22771 'change to syntax for auto
     
-    Dim last_row As Long
-    last_row = ws.Cells(Rows.Count, 1).End(xlUp).Row
-    For i = 2 To last_row
-    'For i = 2 To Cells(Rows.Count, 2).End(xlUp).Row
+   ' Dim last_row As Integer
+   ' last_row = 753001
+    'ws.Cells(Rows.Count, 1).End(xlUp).Row
+    'For i = 2 To 753000
+    For i = 2 To ws.Cells(Rows.Count, 2).End(xlUp).Row
        ' If tick_open = -99 Then
        vol_tot = vol_tot + ws.Cells(i, 7)
             
@@ -101,7 +102,7 @@ For Each ws In Worksheets
     
     Dim last_row
     last_row = ws.Cells(Rows.Count, 9).End(xlUp).Row
-    For i = 2 To 51 'replace with fancy code
+    For i = 2 To last_row 'replace with fancy code
         If ws.Cells(i, 10).Value >= 0 Then
             ws.Range("J" & i).Interior.ColorIndex = 43
         ElseIf ws.Cells(i, 10).Value < 0 Then
@@ -144,3 +145,4 @@ For Each ws In Worksheets
 Next ws
 
 End Sub
+
